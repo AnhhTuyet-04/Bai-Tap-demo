@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - GiaDinhShop</title>
+    <style>
+        /* Thêm style cơ bản cho trang */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #b95454;
+            
+        }
+        header {
+            background-color: z#4eba51;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative; /* Để đặt logo tương đối trong header */
+            
+        }
+        .logo {
+            position: absolute;
+            top: -22px;
+            left: 15px;
+            width: 150px; /* Kích thước logo, bạn có thể thay đổi */
+            
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            background-color: #c52c2c;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+            
+        }
+        nav ul li a:hover {
+            background-color: #8b7b7b;
+        }
+        main {
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: rgb(188, 188, 188);
+            box-shadow: 0 2px 8px red;
+            color: #691212;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        button {
+            background-color: #ab2222;
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #c54f4f;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Thêm logo vào góc trên cùng bên trái -->
+        <img src="logo.png" alt="Logo GiaDinhShop" class="logo">
+        <h1>SHOP ĐIỆN TỬ - GIA ĐÌNH</h1>
+    </header>
+    <nav>
+        <ul class="menu">
+            <li><a href="sitemap.html">Sitemap</a></li>
+            <li><a href="BAI TAP LON.html">Tổng quan</a></li>
+            <li><a href="trang chu.html">Trang chủ</a></li>
+            <li><a href="gioi thieu.html">Giới thiệu</a></li>
+            <li><a href="danh muc san pham.html">Sản phẩm</a></li>
+            <li><a href="gio hang.html">Giỏ hàng</a></li>
+            <li><a href="Tin tức.html">Tin tức</a></li>
+            <li><a href="dki thanh vien.html">Đăng ký thành viên</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Chào mừng đến với GiaDinhShop</h2>
+        <p>Tại đây chúng tôi sẽ cung cấp các sản phẩm gia đình tốt nhất dành cho bạn.</p>
+        <header>
+            <h1>Danh sách Sản phẩm có lượt bán CAO nhất</h1>
+        </header>
+        <table>
+            <tr>
+                <th>Hình ảnh</th>
+                <th>Sản phẩm</th>
+                <th>Giá</th>
+                <th>Thao tác</th>
+                <th>Lượt mua</th>
+            </tr>
+            <tr>
+                <td><img src="mviadvanc-2023020613432.png" alt="MVIADVANC - Máy xay sinh tố công nghiệp Vitamix Drink Machine Advance" width="100"></td>
+                <td>MVIADVANC - Máy xay sinh tố công nghiệp Vitamix Drink Machine Advance</td>
+                <td>16,290,000 VND</td>
+                <td><button onclick="addToCart('MVIADVANC', 16290000)">Thêm vào giỏ</button></td>
+                <td>1,250 đã bán</td>
+            </tr>
+            <tr>
+                <td><img src="robot.jpg" alt="Robot hút bụi lau nhà Roborock S8 MaxV Ultra – Bản Quốc Tế" width="100"></td>
+                <td>Robot hút bụi lau nhà Roborock S8 MaxV Ultra - Bản Quốc Tế</td>
+                <td>25,990,000 VND</td>
+                <td><button onclick="addToCart('Roborock S8 MaxV', 25990000)">Thêm vào giỏ</button></td>
+                <td>2,115 đã bán</td>
+            </tr>
+            <tr>
+                <td><img src="310-May-loc-khong-khi-1-tang-LG-PuriCare-360-AS65GDWH0.ABAE_.jpg" alt="Máy lọc không khí 1 tầng LG PuriCare 360 AS65GDWH0.ABAE" width="100"></td>
+                <td>Máy lọc không khí 1 tầng LG PuriCare 360 AS65GDWH0.ABAE</td>
+                <td>16,800,000 VND</td>
+                <td><button onclick="addToCart('LG PuriCare 360', 16800000)">Thêm vào giỏ</button></td>
+                <td>955 đã bán</td>
+            </tr>
+        </table>
+    </main>
+
+    <script>
+        // Hàm thêm sản phẩm vào giỏ hàng
+        function addToCart(productName, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let productIndex = cart.findIndex(item => item.name === productName);
+
+            if (productIndex !== -1) {
+                cart[productIndex].quantity += 1; // Tăng số lượng nếu sản phẩm đã có
+            } else {
+                cart.push({ name: productName, price: price, quantity: 1 }); // Thêm sản phẩm mới
+            }
+            localStorage.setItem('cart', JSON.stringify(cart)); // Cập nhật giỏ hàng
+
+            // Chuyển đến trang giỏ hàng
+            window.location.href = 'gio hang.html';
+        }
+    </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu - GiaDinhShop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #70dd72;
+            color: #ba6c6c;
+            padding: 20px 0;
+            text-align: center;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(174, 167, 167, 0.1);
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #c84b4b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #d57a7a;
+            color: white;
+            font-size: 16px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        td {
+            font-size: 15px;
+        }
+        .mission {
+            background-color: #fffbe6;
+            padding: 10px;
+            border-left: 4px solid #ff9800;
+            margin-top: 10px;
+            border-radius: 4px;
+            color: #5c5c5c;
+            font-style: italic;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #4CAF50;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .cart-icon {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;}
+        .cart-icon img {
+            width: 40px;
+            margin-right: 10px;}
+    </style>
+</head>
+<div class="cart-icon">
+    <img src="cart.png" alt="Giỏ hàng">
+    <span class="cart-count">0</span>
+</div>
+<body>
+<header>
+    <h1>Giới thiệu</h1>
+    
+</header>
+
+<main>
+    <table>
+        <tr>
+            <th>Thông tin</th>
+            <th>Chi tiết</th>
+        </tr>
+        <tr>
+            <td><strong>Tên cửa hàng</strong></td>
+            <td>SHOP ĐIỆN TỬ - GIA ĐÌNH</td>
+        </tr>
+        <tr>
+            <td><strong>Năm thành lập</strong></td>
+            <td>2024</td>
+        </tr>
+        <tr>
+            <td><strong>Địa chỉ</strong></td>
+            <td>12 Nguyễn Văn Bảo, phường 4, quận Gò Vấp, TPHCM.</td>
+        </tr>
+        <tr>
+            <td><strong>Sứ mệnh</strong></td>
+            <td class="mission">Đem lại sự tiện ích cho mọi gia đình.</td>
+        </tr>
+    </table>
+</main>
+<script>
+    // Hàm để cập nhật số lượng sản phẩm trong giỏ hàng
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+        document.querySelector('.cart-count').textContent = cartCount;
+    }
+
+    // Hàm thêm sản phẩm vào giỏ hàng và chuyển hướng đến trang giỏ hàng
+    function addToCart() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const productName = 'Máy Giặt Bosch WAG28492 Serie 6 Cửa Trước 9kg';
+        const productPrice = 32500000;
+
+        let productIndex = cart.findIndex(item => item.name === productName);
+
+        if (productIndex !== -1) {
+            cart[productIndex].quantity += 1; // Tăng số lượng nếu sản phẩm đã có
+        } else {
+            cart.push({ name: productName, price: productPrice, quantity: 1 }); // Thêm sản phẩm mới
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart)); // Cập nhật giỏ hàng
+        updateCartCount(); // Cập nhật hiển thị số lượng sản phẩm trong giỏ hàng
+
+        // Chuyển đến trang giỏ hàng sau khi thêm sản phẩm
+        window.location.href = 'gio hang.html'; // Đường dẫn tới trang giỏ hàng
+    }
+
+    // Cập nhật số lượng sản phẩm khi trang được tải lại
+    document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+<footer>
+    © 2024 SHOP ĐIỆN TỬ - GIA ĐÌNH. All rights reserved.
+</footer>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh mục sản phẩm</title>
+  <style>
+    /* Tạo container sản phẩm */
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    /* Cài đặt cho mỗi sản phẩm */
+    .product-item {
+      width: 48%;
+      margin: 1%;
+      border: 1px solid #c50d0d;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    /* Định dạng hình ảnh và tên sản phẩm */
+    .product-item img {
+      width: 100%;
+      height: auto;
+    }
+
+    .product-item h3 {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .product-item button {
+      background-color: #c12929;
+      border: 1px solid #ffffff;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .news-link {
+      display: block;
+      margin-top: 10px;
+      color: #1b5522;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .news-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Danh mục sản phẩm</h1>
+
+  <div class="product-container">
+    <!-- Sản phẩm 1 -->
+    <div class="product-item">
+      <h3>Máy Giặt Bosch WAG28492 Serie 6 Cửa Trước 9kg</h3>
+      <img src="may giat.jpg" alt="Máy Giặt Bosch">
+      <p>32,500,000 VND</p>
+      <td><button onclick="addToCart('Bosch', 32500000)">Thêm vào giỏ</button></td>
+      <a href="may giat.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+
+    <!-- Sản phẩm 2 -->
+    <div class="product-item">
+      <h3>Tủ Lạnh LG Inverter 470 Lít GR-B50BL</h3>
+      <img src="tu lanh.webp" alt="Tủ Lạnh LG Inverter 470 Lít GR-B50BL">
+      <p>13,900,000 VND</p>
+      <td><button onclick="addToCart('Tủ lạnh LG Inverter', 13900000)">Thêm vào giỏ</button></td>
+      <a href="tu lanh.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+  </div>
+
+  <div class="product-container">
+    <!-- Sản phẩm 1 -->
+    <div class="product-item">
+      <h3>Máy lạnh DAIKIN 1.0 HP FTKY25WAVMV</h3>
+      <img src="may lanh.jpg" alt="Máy lạnh DAIKIN 1.0 HP FTKY25WAVMV">
+      <p>15,590,000 VND</p>
+      <td><button onclick="addToCart('Điều hòa DAIKIN', 15590000)">Thêm vào giỏ</button></td>
+      <a href="may lanh.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+
+    <!-- Sản phẩm 2 -->
+    <div class="product-item">
+      <h3>Tivi Sony 4K 65 inch KD-65X75K</h3>
+      <img src="tivi.jpg" alt="Tivi Sony 4K 65 inch KD-65X75K">
+      <p>13,900,000 VND</p>
+      <td><button onclick="addToCart('Tivi Sony 4K', 13900000)">Thêm vào giỏ</button></td>
+      <a href="tivi.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+  </div>
+
+  <div class="product-container">
+    <!-- Sản phẩm 1 -->
+    <div class="product-item">
+      <h3>Máy xay cà phê HC600 Ver 2.0</h3>
+      <img src="may pha cafe.jpg" alt="Máy xay cà phê HC600 Ver 2.0">
+      <p>6,199,000 VND</p>
+      <td><button onclick="addToCart('Máy xay cafe HC600', 6199000)">Thêm vào giỏ</button></td>
+      <a href="may xay cafe.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+
+    <!-- Sản phẩm 2 -->
+    <div class="product-item">
+      <h3>MVIADVANC - Máy xay sinh tố công nghiệp Vitamix Drink Machine Advance</h3>
+      <img src="mviadvanc-2023020613432.png" alt="MVIADVANC - Máy xay sinh tố công nghiệp Vitamix Drink Machine Advance">
+      <p>16,290,000 VND</p>
+      <td><button onclick="addToCart('Máy xay sinh tố', 16290000)">Thêm vào giỏ</button></td>
+      <a href="may xay sinh to.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+  </div>
+
+  <div class="product-container">
+    <!-- Sản phẩm 1 -->
+    <div class="product-item">
+      <h3>Robot hút bụi lau nhà Roborock S8 MaxV Ultra - Bản Quốc Tế</h3>
+      <img src="robot.jpg" alt="Robot hút bụi lau nhà Roborock S8 MaxV Ultra - Bản Quốc Tế">
+      <p>25,990,000 VND</p>
+      <td><button onclick="addToCart('Robot hút bụi Roborock', 25990000)">Thêm vào giỏ</button></td>
+      <a href="robot.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+
+    <!-- Sản phẩm 2 -->
+    <div class="product-item">
+      <h3>Máy lọc không khí 1 tầng LG PuriCare 360 AS65GDWH0.ABAE</h3>
+      <img src="310-May-loc-khong-khi-1-tang-LG-PuriCare-360-AS65GDWH0.ABAE_.jpg" alt="Máy lọc không khí 1 tầng LG PuriCare 360 AS65GDWH0.ABAE">
+      <p>16,800,000 VND</p>
+      <td><button onclick="addToCart('Máy lọc không khí 1 tầng LG', 16800000)">Thêm vào giỏ</button></td>
+      <a href="loc kk.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+  </div>
+  <script>
+    // Hàm thêm sản phẩm vào giỏ hàng
+    function addToCart(productName, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let productIndex = cart.findIndex(item => item.name === productName);
+
+        if (productIndex !== -1) {
+            cart[productIndex].quantity += 1; // Tăng số lượng nếu sản phẩm đã có
+        } else {
+            cart.push({ name: productName, price: price, quantity: 1 }); // Thêm sản phẩm mới
+        }
+        localStorage.setItem('cart', JSON.stringify(cart)); // Cập nhật giỏ hàng
+
+        // Chuyển đến trang giỏ hàng
+        window.location.href = 'gio hang.html';
+    }
+</script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin tức mới nhất - GiaDinhShop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #62d565;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .news-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .news-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .news-item h2 {
+            font-size: 20px;
+            color: #f05959;
+        }
+        .news-item p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Tin tức mới nhất</h1>
+</header>
+
+<div class="news-container">
+    <div class="news-item">
+        <h2><a href="khuyen-mai-thang-9.html">Khuyến mãi lớn tháng 9</a></h2>
+        <p>Chúng tôi đang tổ chức khuyến mãi lớn với nhiều sản phẩm giảm giá lên đến 50%. Hãy nhanh tay truy cập và chọn cho mình những sản phẩm yêu thích!</p>
+    </div>
+    <div class="news-item">
+        <h2><a href="ra-mat-san-pham-moi.html">Ra mắt sản phẩm mới</a></h2>
+        <p>GiaDinhShop vui mừng thông báo ra mắt dòng sản phẩm máy lọc không khí mới nhất. Sản phẩm được trang bị công nghệ hiện đại giúp bảo vệ sức khỏe gia đình bạn.</p>
+    </div>
+    <div class="news-item">
+        <h2><a href="chinh-sach-van-chuyen.html">Chính sách vận chuyển</a></h2>
+        <p>Kể từ tháng 10, chúng tôi sẽ cập nhật chính sách vận chuyển miễn phí cho đơn hàng trên 1 triệu đồng. Hãy mua sắm thoải mái mà không lo về phí vận chuyển!</p>
+    </div>
+</div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - GiaDinhShop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .contact-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Liên hệ với chúng tôi</h1>
+</header>
+
+<div class="contact-container">
+    <h2>Chúng tôi rất vui khi nhận được ý kiến của bạn!</h2>
+    <form action="thanks.html">
+        <label for="name">Tên:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Nội dung:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <button type="submit" class="btn-confirm">Gửi ý kiến của bạn</button>
+    </form>
+</div>
+<p><a class="back-link" href="trang chu.html">Quay lại Trang chủ</a></p>
+    <a class="back-link" href="BAI TAP LON.html">Quay lại trang Tổng quan</a>
+</body>
+</html>
+
+

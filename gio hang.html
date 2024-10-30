@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - GiaDinhShop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #c9eecd;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #318a34;
+            color: rgb(255, 255, 255);
+            padding: 15px;
+            text-align: center;
+        }
+        .cart-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(222, 222, 222, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ffffff;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #d57a7a;
+            color: white;
+        }
+        .total {
+            font-weight: bold;
+            text-align: right;
+            padding-right: 20px;
+        }
+        .btn-checkout {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #d57a7a;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-checkout:hover {
+            background-color: #c54f4f;
+        }
+        .btn-remove {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .btn-remove:hover {
+            background-color: #c43d3d;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #2fb434;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;}
+        
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Giỏ hàng của bạn</h1>
+</header>
+
+<div class="cart-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Tổng cộng</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody id="cartItems">
+            <!-- Các sản phẩm sẽ được hiển thị ở đây -->
+        </tbody>
+    </table>
+    <p class="total" id="totalPrice">Tổng giá: 0 VND</p>
+    <button class="btn-checkout" onclick="window.location.href='thanh toan.html'">Tiến hành thanh toán</button>
+</div>
+
+<script>
+    // Hàm hiển thị giỏ hàng
+    function displayCart() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartItems = document.getElementById('cartItems');
+        let totalPrice = 0;
+
+        // Xóa các sản phẩm cũ trong tbody
+        cartItems.innerHTML = '';
+
+        cart.forEach((item, index) => {
+            let row = document.createElement('tr');
+
+            // Thêm tên sản phẩm
+            let cellName = document.createElement('td');
+            cellName.textContent = item.name;
+            row.appendChild(cellName);
+
+            // Thêm số lượng
+            let cellQuantity = document.createElement('td');
+            cellQuantity.textContent = item.quantity;
+            row.appendChild(cellQuantity);
+
+            // Thêm giá
+            let cellPrice = document.createElement('td');
+            cellPrice.textContent = item.price.toLocaleString() + ' VND';
+            row.appendChild(cellPrice);
+
+            // Tính tổng cộng
+            let totalItem = item.price * item.quantity;
+            totalPrice += totalItem;
+
+            // Thêm tổng cộng
+            let cellTotal = document.createElement('td');
+            cellTotal.textContent = totalItem.toLocaleString() + ' VND';
+            row.appendChild(cellTotal);
+
+            // Thêm nút xóa
+            let cellRemove = document.createElement('td');
+            let removeButton = document.createElement('button');
+            removeButton.textContent = 'Xóa';
+            removeButton.classList.add('btn-remove');
+            removeButton.onclick = () => removeFromCart(index); // Gọi hàm xóa với chỉ số sản phẩm
+            cellRemove.appendChild(removeButton);
+            row.appendChild(cellRemove);
+
+            // Thêm hàng vào tbody
+            cartItems.appendChild(row);
+        });
+
+        // Cập nhật tổng giá
+        document.getElementById('totalPrice').textContent = 'Tổng giá: ' + totalPrice.toLocaleString() + ' VND';
+    }
+
+    // Hàm xóa sản phẩm khỏi giỏ hàng
+    function removeFromCart(index) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.splice(index, 1); // Xóa sản phẩm tại chỉ số index
+        localStorage.setItem('cart', JSON.stringify(cart)); // Cập nhật giỏ hàng trong Local Storage
+        displayCart(); // Cập nhật lại hiển thị giỏ hàng
+    }
+
+    // Gọi hàm hiển thị giỏ hàng khi trang được tải
+    window.onload = displayCart;
+</script>
+<a class="back-link" href="danh muc san pham.html">Quay lại Danh mục sản phẩm</a>
+    <p><a class="back-link" href="trang chu.html">Quay lại Trang chủ</a></p>
+    <footer>
+        © 2024 SHOP ĐIỆN TỬ - GIA ĐÌNH. All rights reserved.
+    </footer>
+</body>
+</html>

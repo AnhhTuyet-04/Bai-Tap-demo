@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh mục sản phẩm</title>
+  <style>
+    /* Tạo container sản phẩm */
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    /* Cài đặt cho mỗi sản phẩm */
+    .product-item {
+      width: 48%;
+      margin: 1%;
+      border: 1px solid #c50d0d;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    /* Định dạng hình ảnh và tên sản phẩm */
+    .product-item img {
+      width: 100%;
+      height: auto;
+    }
+
+    .product-item h3 {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .product-item button {
+      background-color: #d57a7a;
+      border: 1px solid #440101;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .news-link {
+      display: block;
+      margin-top: 10px;
+      color: #03540c;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .news-link:hover {
+      text-decoration: underline;
+    }
+    footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #2fb434;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;}
+    .cart-icon {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;}
+    .cart-icon img {
+            width: 40px;
+            margin-right: 5px;}
+  </style>
+</head>
+<body>
+
+  <h1>Danh mục sản phẩm</h1>
+  <div class="cart-icon">
+    <img src="cart.png" alt="Giỏ hàng">
+    <span class="cart-count">0</span>
+</div>
+  <p><a class="back-link" href="trang chu.html">Quay lại Trang chủ</a></p>
+  <a class="back-link" href="BAI TAP LON.html">Quay lại trang Tổng quan</a>
+  <div class="product-container">
+    <!-- Sản phẩm 1 -->
+    <div class="product-item">
+      <h3>Máy Giặt Bosch WAG28492 Serie 6 Cửa Trước 9kg</h3>
+      <img src="may giat.jpg" alt="Máy Giặt Bosch">
+      <p>32,500,000 VND</p>
+      <td><button onclick="addToCart('Bosch', 32500000)">Thêm vào giỏ</button></td>
+      <a href="may giat.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+
+    <!-- Sản phẩm 2 -->
+    <div class="product-item">
+      <h3>Tủ Lạnh LG Inverter 470 Lít GR-B50BL</h3>
+      <img src="tu lanh.webp" alt="Tủ Lạnh LG Inverter 470 Lít GR-B50BL">
+      <p>13,900,000 VND</p>
+      <td><button onclick="addToCart('Tủ lạnh LG Inverter', 13900000)">Thêm vào giỏ</button></td>
+      <a href="tu lanh.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+  </div>
+
+  <div class="product-container">
+    <!-- Sản phẩm 1 -->
+    <div class="product-item">
+      <h3>Máy lạnh DAIKIN 1.0 HP FTKY25WAVMV</h3>
+      <img src="may lanh.jpg" alt="Máy lạnh DAIKIN 1.0 HP FTKY25WAVMV">
+      <p>15,590,000 VND</p>
+      <td><button onclick="addToCart('Điều hòa DAIKIN', 15590000)">Thêm vào giỏ</button></td>
+      <a href="may lanh.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+
+    <!-- Sản phẩm 2 -->
+    <div class="product-item">
+      <h3>Tivi Sony 4K 65 inch KD-65X75K</h3>
+      <img src="tivi.jpg" alt="Tivi Sony 4K 65 inch KD-65X75K">
+      <p>13,900,000 VND</p>
+      <td><button onclick="addToCart('Tivi Sony 4K', 13900000)">Thêm vào giỏ</button></td>
+      <a href="tivi.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+  </div>
+
+  <div class="product-container">
+    <!-- Sản phẩm 1 -->
+    <div class="product-item">
+      <h3>Máy xay cà phê HC600 Ver 2.0</h3>
+      <img src="may pha cafe.jpg" alt="Máy xay cà phê HC600 Ver 2.0">
+      <p>6,199,000 VND</p>
+      <td><button onclick="addToCart('Máy xay cafe HC600', 6199000)">Thêm vào giỏ</button></td>
+      <a href="may xay cafe.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+
+    <!-- Sản phẩm 2 -->
+    <div class="product-item">
+      <h3>MVIADVANC - Máy xay sinh tố công nghiệp Vitamix Drink Machine Advance</h3>
+      <img src="mviadvanc-2023020613432.png" alt="MVIADVANC - Máy xay sinh tố công nghiệp Vitamix Drink Machine Advance">
+      <p>16,290,000 VND</p>
+      <td><button onclick="addToCart('Máy xay sinh tố', 16290000)">Thêm vào giỏ</button></td>
+      <a href="may xay sinh to.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+  </div>
+
+  <div class="product-container">
+    <!-- Sản phẩm 1 -->
+    <div class="product-item">
+      <h3>Robot hút bụi lau nhà Roborock S8 MaxV Ultra - Bản Quốc Tế</h3>
+      <img src="robot.jpg" alt="Robot hút bụi lau nhà Roborock S8 MaxV Ultra - Bản Quốc Tế">
+      <p>25,990,000 VND</p>
+      <td><button onclick="addToCart('Robot hút bụi Roborock', 25990000)">Thêm vào giỏ</button></td>
+      <a href="robot.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+
+    <!-- Sản phẩm 2 -->
+    <div class="product-item">
+      <h3>Máy lọc không khí 1 tầng LG PuriCare 360 AS65GDWH0.ABAE</h3>
+      <img src="310-May-loc-khong-khi-1-tang-LG-PuriCare-360-AS65GDWH0.ABAE_.jpg" alt="Máy lọc không khí 1 tầng LG PuriCare 360 AS65GDWH0.ABAE">
+      <p>16,800,000 VND</p>
+      <td><button onclick="addToCart('Máy lọc không khí 1 tầng LG', 16800000)">Thêm vào giỏ</button></td>
+      <a href="loc kk.html" class="news-link">Xem tin tức về sản phẩm</a>
+    </div>
+  </div>
+  <script>
+    // Hàm để cập nhật số lượng sản phẩm trong giỏ hàng
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+        document.querySelector('.cart-count').textContent = cartCount;
+    }
+
+    // Hàm thêm sản phẩm vào giỏ hàng và chuyển hướng đến trang giỏ hàng
+    function addToCart() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const productName = 'Máy Giặt Bosch WAG28492 Serie 6 Cửa Trước 9kg';
+        const productPrice = 32500000;
+
+        let productIndex = cart.findIndex(item => item.name === productName);
+
+        if (productIndex !== -1) {
+            cart[productIndex].quantity += 1; // Tăng số lượng nếu sản phẩm đã có
+        } else {
+            cart.push({ name: productName, price: productPrice, quantity: 1 }); // Thêm sản phẩm mới
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart)); // Cập nhật giỏ hàng
+        updateCartCount(); // Cập nhật hiển thị số lượng sản phẩm trong giỏ hàng
+
+        // Chuyển đến trang giỏ hàng sau khi thêm sản phẩm
+        window.location.href = 'gio hang.html'; // Đường dẫn tới trang giỏ hàng
+    }
+
+    // Cập nhật số lượng sản phẩm khi trang được tải lại
+    document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+<p><a class="back-link" href="trang chu.html">Quay lại Trang chủ</a></p>
+    <a class="back-link" href="BAI TAP LON.html">Quay lại trang Tổng quan</a>
+    <footer>
+      © 2024 SHOP ĐIỆN TỬ - GIA ĐÌNH. All rights reserved.
+  </footer>
+</body>
+</html>

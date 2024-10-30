@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - GiaDinhShop</title>
+    <style>
+        /* Thêm style cơ bản cho trang */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #3f8842;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+        .logo {
+            position: absolute;
+            top: -22px;
+            left: 15px;
+            width: 150px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            background-color: #333;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        nav ul li a:hover {
+            background-color: #575757;
+        }
+        main {
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        button {
+            background-color: #d57a7a;
+            color: white;
+            border: none;
+            padding: 6px 8px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #d31414;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #2fb434;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .login-form {
+            width: 100%;
+        }
+        .container {
+            padding: 20px;
+        }
+        .alert {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+        .alert-danger {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo GiaDinhShop" class="logo">
+        <h1>SHOP ĐIỆN TỬ - GIA ĐÌNH</h1>
+    </header>
+    <nav>
+        <ul class="menu">
+            <li><a href="sitemap.html">Sitemap</a></li>
+            <li><a href="BAI TAP LON.html">Tổng quan</a></li>
+            <li><a href="trang chu.html">Trang chủ</a></li>
+            <li><a href="gioi thieu.html">Giới thiệu</a></li>
+            <li><a href="danh muc san pham.html">Sản phẩm</a></li>
+            <li><a href="gio hang.html">Giỏ hàng</a></li>
+            <li><a href="Tin tức.html">Tin tức</a></li>
+            <li><a href="dki thanh vien.html">Đăng ký thành viên</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="login-form">
+            <h2>Đăng Nhập</h2>
+            <form id="loginForm" action="XAC NHAN DAP NHAP.HTML" method="post">
+                <input type="email" id="username" name="username" placeholder="Email" required pattern="^[\w.%+-]+@gmail\.com$" title="Email phải có đuôi @gmail.com">
+                <input type="password" id="password" name="password" placeholder="Mật khẩu" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$" title="Mật khẩu phải có ít nhất 12 ký tự, bao gồm chữ cái, số và ký tự đặc biệt">
+                <button type="submit">Đăng Nhập</button>
+            </form>
+            <div id="message"></div>
+        </div>
+
+        <form class="search-form" action="search-results.html" method="get">
+            <input type="text" name="query" placeholder="Tìm kiếm sản phẩm..." required>
+            <button type="submit">Tìm Kiếm</button>
+        </form>
+    </div>
+    <footer>
+        © 2024 SHOP ĐIỆN TỬ - GIA ĐÌNH. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const emailField = document.getElementById('username');
+            const passwordField = document.getElementById('password');
+            const message = document.getElementById('message');
+
+            if (emailField.checkValidity() && passwordField.checkValidity()) {
+                message.innerHTML = '<div class="alert alert-success">Đăng nhập thành công!</div>';
+                setTimeout(() => {
+                    document.getElementById('loginForm').submit();
+                }, 1000); // Cho phép form được gửi sau 1 giây để hiển thị thông báo
+            } else {
+                message.innerHTML = '<div class="alert alert-danger">Email hoặc mật khẩu không đúng định dạng, vui lòng thử lại.</div>';
+            }
+        });
+    </script>
+</body>
+</html>

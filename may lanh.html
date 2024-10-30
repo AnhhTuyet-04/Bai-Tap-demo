@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máy lạnh DAIKIN 1.0 HP FTKY25WAVMV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+        }
+        .cart-icon {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            
+        }
+        .cart-icon img {
+            width: 40px;
+            margin-right: 5px;
+           
+        }
+        .cart-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 15px;
+        }
+        .product-details {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .product-image {
+            flex: 1;
+            max-width: 400px;
+            margin-right: 20px;
+        }
+        .product-image img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .product-info {
+            flex: 2;
+        }
+        .product-info h2 {
+            color: #333;
+        }
+        .product-info p {
+            line-height: 1.6;
+            color: #555;
+        }
+        .price {
+            color: #d9534f;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .add-to-cart {
+            background-color: #d57a7a;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .add-to-cart:hover {
+            background-color: #c54f4f;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 14px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <h1>Máy lạnh DAIKIN 1.0 HP FTKY25WAVMV</h1>
+    <div class="cart-icon">
+        <img src="cart.png" alt="Giỏ hàng">
+        <span class="cart-count">0</span>
+    </div>
+</header>
+
+<div class="product-details">
+    <div class="product-image">
+        <img src="may lanh.jpg" alt="Máy lạnh DAIKIN 1.0 HP FTKY25WAVMV">
+    </div>
+    <div class="product-info">
+        <h2>Mô tả sản phẩm</h2>
+        <p>
+            Điều hòa Daikin Inverter 2 chiều Lạnh - Sưởi ATHF25XVMV cải tiến thiết kế mới ấn tượng hơn với đường viền màu Xanh Dương bo cong mềm mại theo cạnh bên dàn lạnh một cách tinh tế, mang đến nét độc đáo mà vẫn hài hòa trong các không gian nội thất.
+            Remote cũng được đổi mới về thiết kế với phối màu trắng-đen bắt mắt, tạo điểm nhấn cho không gian phòng của bạn.
+        </p>
+        <p>
+            <strong>Đặc điểm nổi bật:</strong>
+            <ul>
+                <li>Model: ATHF25XVMV/ARHF25XVMV</li>
+                <li>Màu sắc: Trắng</li>
+                <li>Xuất sứ: Việt Nam</li>
+                <li>Loại máy lạnh: Máy lạnh 2 chiều (có sưởi ấm)</li>
+                <li>Kiểu dáng: Máy lạnh treo tường</li>
+                <li>Công suất: 1 HP</li>
+            </ul>
+        </p>
+        <p class="price">Giá: 15,590,000 VND</p>
+        <button class="add-to-cart" onclick="addToCart()">Thêm vào giỏ hàng</button>
+        <br>
+        <a href="danh muc san pham.html" class="back-link">← Quay lại danh sách sản phẩm</a>
+    </div>
+</div>
+
+<script>
+    // Hàm để cập nhật số lượng sản phẩm trong giỏ hàng
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+        document.querySelector('.cart-count').textContent = cartCount;
+    }
+
+    // Hàm thêm sản phẩm vào giỏ hàng và chuyển hướng đến trang giỏ hàng
+    function addToCart() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const productName = 'Máy lạnh DAIKIN 1.0 HP FTKY25WAVMV';
+        const productPrice = 15590000;
+
+        let productIndex = cart.findIndex(item => item.name === productName);
+
+        if (productIndex !== -1) {
+            cart[productIndex].quantity += 1; // Tăng số lượng nếu sản phẩm đã có
+        } else {
+            cart.push({ name: productName, price: productPrice, quantity: 1 }); // Thêm sản phẩm mới
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart)); // Cập nhật giỏ hàng
+        updateCartCount(); // Cập nhật hiển thị số lượng sản phẩm trong giỏ hàng
+
+        // Chuyển đến trang giỏ hàng sau khi thêm sản phẩm
+        window.location.href = 'gio hang.html'; // Đường dẫn tới trang giỏ hàng
+    }
+
+    // Cập nhật số lượng sản phẩm khi trang được tải lại
+    document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+
+</body>
+</html>

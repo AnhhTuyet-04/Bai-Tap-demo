@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - GiaDinhShop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .contact-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Liên hệ với chúng tôi</h1>
+</header>
+
+<div class="contact-container">
+    <h2>Chúng tôi rất vui khi nhận được ý kiến của bạn!</h2>
+    <form action="thanks.html">
+        <label for="name">Tên:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Nội dung:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <button type="submit" class="btn-confirm">Gửi ý kiến của bạn</button>
+    </form>
+</div>
+<p><a class="back-link" href="trang chu.html">Quay lại Trang chủ</a></p>
+    <a class="back-link" href="BAI TAP LON.html">Quay lại trang Tổng quan</a>
+</body>
+</html>
